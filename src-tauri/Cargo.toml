@@ -1,6 +1,6 @@
 [package]
 name = "lynara-launcher-v2"
-version = "1.0.0"
+version = "1.0.1"
 description = "Launcher officiel du serveur Lynara"
 authors = ["THD1912"]
 edition = "2021"
