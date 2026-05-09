@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    @apply bg-bg-deep text-text-primary font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection {
+    background: rgb(244 185 66 / 0.3);
+    color: #f5e8d4;
+  }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(255 255 255 / 0.05);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(255 255 255 / 0.1);
+  }
+  button, [data-tauri-drag-region] {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}
+
+@layer components {
+  /* === Glassmorphism === */
+  .glass {
+    background: rgb(28 18 36 / 0.55);
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    border: 1px solid rgb(255 255 255 / 0.08);
+    box-shadow:
+      0 16px 48px -8px rgb(0 0 0 / 0.4),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.06);
+  }
+  .glass-strong {
+    background: rgb(28 18 36 / 0.78);
+    backdrop-filter: blur(32px) saturate(150%);
+    -webkit-backdrop-filter: blur(32px) saturate(150%);
+    border: 1px solid rgb(255 255 255 / 0.10);
+    box-shadow:
+      0 24px 64px -8px rgb(0 0 0 / 0.5),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.08);
+  }
+
+  /* === Premium gold gradient text === */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #ffd270 0%, #f4b942 50%, #c89530 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* === Premium text shadow === */
+  .text-shadow-glow {
+    text-shadow:
+      0 2px 16px rgba(244, 185, 66, 0.15),
+      0 4px 32px rgba(0, 0, 0, 0.6);
+  }
+
+  /* === Animated blobs (Stripe-like background) === */
+  .blob-1 {
+    animation: blob-drift-1 22s ease-in-out infinite;
+  }
+  .blob-2 {
+    animation: blob-drift-2 28s ease-in-out infinite;
+  }
+  .blob-3 {
+    animation: blob-drift-3 25s ease-in-out infinite;
+  }
+
+  /* === Stars === */
+  .stars-field {
+    background-image:
+      radial-gradient(1px 1px at 23% 14%, rgba(255, 255, 255, 0.7), transparent),
+      radial-gradient(1px 1px at 67% 38%, rgba(255, 255, 255, 0.5), transparent),
+      radial-gradient(1px 1px at 41% 72%, rgba(255, 255, 255, 0.6), transparent),
+      radial-gradient(1px 1px at 85% 81%, rgba(255, 255, 255, 0.4), transparent),
+      radial-gradient(1px 1px at 12% 56%, rgba(255, 255, 255, 0.5), transparent),
+      radial-gradient(1.5px 1.5px at 78% 22%, rgba(244, 185, 66, 0.6), transparent),
+      radial-gradient(1px 1px at 53% 89%, rgba(255, 255, 255, 0.4), transparent),
+      radial-gradient(1px 1px at 92% 51%, rgba(255, 255, 255, 0.5), transparent),
+      radial-gradient(1.5px 1.5px at 31% 31%, rgba(244, 185, 66, 0.4), transparent);
+    background-size: 100% 100%;
+    animation: stars-twinkle 8s ease-in-out infinite alternate;
+  }
+
+  /* === Logo glow === */
+  .logo-glow {
+    filter: drop-shadow(0 0 20px rgba(244, 185, 66, 0.45))
+            drop-shadow(0 0 60px rgba(244, 185, 66, 0.25))
+            drop-shadow(0 12px 40px rgba(0, 0, 0, 0.6));
+  }
+  .logo-glow-strong {
+    filter: drop-shadow(0 0 24px rgba(244, 185, 66, 0.6))
+            drop-shadow(0 0 80px rgba(244, 185, 66, 0.4))
+            drop-shadow(0 16px 48px rgba(0, 0, 0, 0.7));
+  }
+}
+
+/* === Keyframes === */
+@keyframes blob-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(80px, -40px) scale(1.1); }
+  66% { transform: translate(-30px, 50px) scale(0.95); }
+}
+@keyframes blob-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-60px, 60px) scale(0.9); }
+  66% { transform: translate(40px, -30px) scale(1.08); }
+}
+@keyframes blob-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, -50px) scale(1.15); }
+}
+@keyframes stars-twinkle {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 0.4; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}

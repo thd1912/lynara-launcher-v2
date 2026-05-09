@@ -1,0 +1,55 @@
+[package]
+name = "lynara-launcher-v2"
+version = "1.0.0"
+description = "Launcher officiel du serveur Lynara"
+authors = ["THD1912"]
+edition = "2021"
+
+[lib]
+name = "lynara_launcher_v2_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-shell = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-updater = "2"
+tauri-plugin-process = "2"
+tauri-plugin-opener = "2"
+
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+thiserror = "1"
+
+# HTTP / async
+reqwest = { version = "0.12", default-features = false, features = ["json", "stream", "rustls-tls"] }
+tokio = { version = "1", features = ["full"] }
+futures-util = "0.3"
+
+# File system / hash
+sha1 = "0.10"
+sha2 = "0.10"
+hex = "0.4"
+zip = { version = "0.6", default-features = false, features = ["deflate"] }
+dirs = "5"
+uuid = { version = "1", features = ["v4"] }
+
+# Windows credential manager (Microsoft auth tokens)
+keyring = "3"
+
+# URL / encoding
+url = "2"
+urlencoding = "2"
+base64 = "0.22"
+
+# Logging
+log = "0.4"
+env_logger = "0.11"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
